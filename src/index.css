@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root{
-    --primary-color:#ffdffd;
+    --primary-color:#ffffff;
     --secondary-color:#212121;
 }
 .dark-theme{
     --primary-color:#212121;
-    --secondary-color:#ffdffd;
+    --secondary-color:#ffffff;
 }
 .clr{
 
