@@ -1,6 +1,6 @@
 const Section = () => {
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font dark:text-gray-400">
       <div className="container px-5 py-24 mx-auto">
         <div className="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
           <svg
@@ -20,7 +20,7 @@ const Section = () => {
             needs.
           </p>
           <span className="inline-block h-1 w-10 rounded bg-blue-500 mt-8 mb-6"></span>
-          <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm">RobustKey</h2>
+          <h2 className="text-gray-900 dark:text-gray-100 font-medium title-font tracking-wider text-sm">RobustKey</h2>
           <p className="text-gray-500">Create. Protect. Secure. Generate</p>
         </div>
       </div>

@@ -88,10 +88,10 @@ const PasswordGenerator = () => {
   };
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font dark:text-gray-400">
       <div className="container max-w-screen-xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 dark:text-gray-100">
             Generate Strong and Secure Passwords with Ease
           </h1>
           <p className="mb-8 leading-relaxed">
@@ -102,7 +102,7 @@ const PasswordGenerator = () => {
             <div className="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
               <input
                 type="text"
-                className={`w-full bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 text-lg font-semibold outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-copy tracking-widest active:relative active:top-0.5`}
+                className={`w-full bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 text-lg font-semibold outline-none text-gray-700 dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out cursor-copy tracking-widest active:relative active:top-0.5`}
                 value={password}
                 readOnly
                 onClick={copyPassword}
@@ -161,9 +161,10 @@ const PasswordGenerator = () => {
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <img
-            className="object-cover object-center rounded"
+            className="object-cover object-center"
             alt="hero"
-            src="https://cdn.pixabay.com/photo/2015/10/30/10/40/key-1013662_1280.jpg"
+            src="https://github.com/amanrajrana/RobustKey-PasswordGenerator/assets/75106349/974adb14-1952-408a-970b-168f3d94da63"
+            height={500}
           />
         </div>
       </div>
