@@ -9,10 +9,17 @@ const Header = () => {
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">Home</a>
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">About</a>
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">Contact</a>
+          <img src="images/moon.png" id="icon" onClick={handleClick}></img>
         </nav>
       </div>
     </header>
   );
 };
-
+const handleClick = event => {
+  document.body.classList.toggle("dark-theme");
+  if(document.body.classList.contains("dark-theme")){
+      icon.src="images/sun.png";
+  }
+  else {icon.src="images/moon.png";}
+};
 export default Header;

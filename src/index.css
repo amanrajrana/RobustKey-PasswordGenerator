@@ -2,3 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --primary-color:#ffffff;
+    --secondary-color:#212121;
+}
+.dark-theme{
+    --primary-color:#212121;
+    --secondary-color:#ffffff;
+}
+.clr{
+
+color: white;
+
+}
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Belanosima', sans-serif;
+    background-color:var(--primary-color);
+}
+
+#icon{
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 30px;
+    height: 30px;
+    cursor:pointer;
+    
+    }
