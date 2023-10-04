@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import SunImage from '../../images/sun.png'
+import MoonImage from '../../images/moon.png'
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -44,7 +46,7 @@ const Header = () => {
             Contact
           </a>
           <img
-            src={isDarkTheme ? "images/sun.png" : "images/moon.png"}
+            src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
             width={30}
             height={30}
