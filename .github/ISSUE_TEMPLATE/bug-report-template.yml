@@ -1,7 +1,7 @@
 
 name: Bug report
 description: Create a bug report to help us address errors in the repository
-title: "[BUG] <bug description>"
+title: "🔴 [BUG] <bug description>"
 labels: [bug]
 body:
   - type: textarea
@@ -26,12 +26,6 @@ body:
     id: terms
     attributes:
       label: Checklist
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/ArslanYM/StarterHive/blob/main/CODE_OF_CONDUCT.md)
-      options:
-        - label: "I have read the [Contributing Guidelines](https://github.com/ArslanYM/StarterHive/blob/main/CONTRIBUTING.md)"
-          required: true
-        - label: "I have checked the existing [issues](https://github.com/ArslanYM/StarterHive/issues)"
-          required: true
         - label: "I am willing to work on this issue (optional)"
           required: false
         
