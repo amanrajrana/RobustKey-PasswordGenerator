@@ -2,7 +2,7 @@
 name: Feature Request
 description: Feature Request
 title: "⭐ [Feature] <bug description>"
-labels: [bug]
+labels: [Feature]
 body:
   - type: textarea
     id: FeatureDescription
