@@ -1,0 +1,26 @@
+
+name: Feature Request
+description: Feature Request
+title: "⭐ [Feature] <bug description>"
+labels: [bug]
+body:
+  - type: textarea
+    id: FeatureDescription
+    attributes:
+      label: Description of Feature
+    validations:
+      required: true
+  - type: textarea
+    id: proposedSolution
+    attributes:
+      label: Proposed Solution (if applicable)
+    validations:
+      required: false
+  - type: textarea
+    id: additionalInformation
+    attributes:
+      label: Additional Information (optional)
+    validations:
+      required: false
+
+        
