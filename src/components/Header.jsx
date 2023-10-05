@@ -38,13 +38,17 @@ const Header = () => {
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            <Link to="/">Home</Link>
+            <Link to="/RobustKey-PasswordGenerator">Home</Link>
           </a>
-          <a href="/about" className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
+          <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
           <Link to="/about">About</Link>
           </a>
-          <a href="/contact" className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            <Link to="/contact">Contact</Link>
+          <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
+          <Link to="/contact">Contact</Link>
+          </a>
+          <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
+          <Link to="/contributors">Contributors</Link>
+
           </a>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
