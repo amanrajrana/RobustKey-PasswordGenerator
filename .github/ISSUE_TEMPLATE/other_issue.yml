@@ -1,0 +1,12 @@
+
+name: Other
+description: Other issue
+title: "🔴 [<Issue Type>] <bug description>"
+
+body:
+  - type: textarea
+    id: issueDescription
+    attributes:
+      label: Description
+    validations:
+      required: true
