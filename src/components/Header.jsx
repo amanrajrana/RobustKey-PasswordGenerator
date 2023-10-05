@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from '../../images/sun.png'
 import MoonImage from '../../images/moon.png'
+import { Link } from "react-router-dom"
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -37,13 +38,16 @@ const Header = () => {
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            Home
+            <Link to="/RobustKey-PasswordGenerator">Home</Link>
           </a>
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            About
+          <Link to="/about">About</Link>
           </a>
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            Contact
+          <Link to="/contact">Contact</Link>
+          </a>
+          <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
+          <Link to="/contributors">Contributors</Link>
           </a>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
