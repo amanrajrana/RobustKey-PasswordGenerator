@@ -22,10 +22,3 @@ body:
       label: Add any other context about the problem here
     validations:
       required: false
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Checklist
-        - label: "I am willing to work on this issue (optional)"
-          required: false
-        
