@@ -1,0 +1,41 @@
+name: Welcome Comments
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request:
+    types:
+      - opened
+  pull_request_review:
+    types:
+      - submitted
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Event Type
+        run: echo "Event type is ${{ github.event_name }}"
+      
+      - name: Check for First-Time Contributor
+        id: first_time_contributor
+        run: echo "Is first-time contributor? ${{ github.event.issue.author_association == 'NONE' }}"
+
+      - name: Comment on Issue/PR
+        id: comment
+        if: steps.first_time_contributor.outputs.first_time_contributor == 'true'
+        run: |
+          case "${{ github.event_name }}" in
+            issues)
+              echo "👋 Welcome to the community! Thank you for opening your first issue. Don't forget to star ⭐ the repo and share your thoughts! 😊" > comment.md
+              ;;
+            pull_request)
+              echo "👋 Welcome aboard! Thanks for your pull request. Please take a moment to review our contributing guidelines. We're excited to work with you! 😄" > comment.md
+              ;;
+            pull_request_review)
+              echo "👋 Thanks for your review on this pull request! Your insights are appreciated. Let us know if you have any suggestions or questions. 🙌" > comment.md
+              ;;
+          esac
+          gh issue comment ${{ github.event.issue.number }} --body "$(cat comment.md)"
