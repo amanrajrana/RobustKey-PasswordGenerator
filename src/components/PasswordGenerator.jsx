@@ -1,5 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import CheckBoxWithLabel from "./checkBoxWithLabel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
 
 const PasswordGenerator = () => {
   // State variables
@@ -76,7 +78,7 @@ const PasswordGenerator = () => {
           alert("Unable to copy text to clipboard:", error);
         });
     } else {
-      alert("unable to copy password!");
+      alert("Unable to copy password!");
     }
   };
 
@@ -121,7 +123,11 @@ const PasswordGenerator = () => {
               isUserError ? "text-red-600" : "text-gray-500"
             } mb-4 w-full`}
           >
-            {message}
+            {password.length > 0 ? (
+              <FontAwesomeIcon icon={faCopy} onClick={copyPassword} style={{ cursor: "pointer" }} />
+            ) : (
+              message
+            )}
           </p>
           <h4 className="font-semibold my-3">Customize Password</h4>
           <div className="flex gap-2">
@@ -165,6 +171,7 @@ const PasswordGenerator = () => {
             alt="hero"
             src="https://github.com/amanrajrana/RobustKey-PasswordGenerator/assets/75106349/974adb14-1952-408a-970b-168f3d94da63"
             height={500}
+            // alt="Password Generator"
           />
         </div>
       </div>
