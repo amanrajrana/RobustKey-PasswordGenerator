@@ -30,6 +30,13 @@ const PasswordGenerator = () => {
     },
   ];
 
+  const checkBoxOptions = [
+    { label: 'uppercase', key: 'uppercase' },
+    { label: 'lowercase', key: 'lowercase' },
+    { label: 'numbers', key: 'numbers' },
+    { label: 'specialChar', key: 'specialChar' }
+  ];
+  
   // Character generators for each option
   const generators = {
     uppercase: () => {
@@ -94,7 +101,9 @@ const PasswordGenerator = () => {
     setMessage("Create. Protect. Secure. Generate your password now");
     setIsUserError(false);
   };
+  
 
+  // console.log(checkBoxes)
   return (
     <section className="text-gray-600 body-font dark:text-gray-400">
       <div className="container max-w-screen-xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -158,26 +167,16 @@ const PasswordGenerator = () => {
             />
           </div>
           <div style={{display:"flex", flexDirection: "column"}}>
-            <CheckBoxWithLabel
-              label="uppercase"
-              isChecked={checkBox.uppercase}
-              handleCheckBoxClick={handleCheckBoxClick}
-            />
-            <CheckBoxWithLabel
-              label="lowercase"
-              isChecked={checkBox.lowercase}
-              handleCheckBoxClick={handleCheckBoxClick}
-            />
-            <CheckBoxWithLabel
-              label="numbers"
-              isChecked={checkBox.numbers}
-              handleCheckBoxClick={handleCheckBoxClick}
-            />
-            <CheckBoxWithLabel
-              label="specialChar"
-              isChecked={checkBox.specialChar}
-              handleCheckBoxClick={handleCheckBoxClick}
-            />
+          
+            {checkBoxOptions.map(option => (
+             <CheckBoxWithLabel
+               key={option.key}
+               label={option.label}
+               isChecked={checkBox[option.key]}
+               handleCheckBoxClick={handleCheckBoxClick}
+             />
+            ))}
+
           </div>
           <div className="mt-4">
             <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
