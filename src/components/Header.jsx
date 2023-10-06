@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from '../../images/sun.png'
 import MoonImage from '../../images/moon.png'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -48,6 +48,7 @@ const Header = () => {
           </a>
           <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
           <Link to="/contributors">Contributors</Link>
+
           </a>
           <img
             src={isDarkTheme ? SunImage : MoonImage}

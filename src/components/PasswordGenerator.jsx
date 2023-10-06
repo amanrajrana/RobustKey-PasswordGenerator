@@ -142,6 +142,7 @@ const PasswordGenerator = () => {
             <input
               className="w-16 text-center p-1 bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
               type="number"
+              min={0}
               max={30}
               name="passwordLength"
               value={passwordLength}
