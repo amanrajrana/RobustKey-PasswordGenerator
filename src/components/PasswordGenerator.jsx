@@ -11,14 +11,17 @@ const PasswordGenerator = () => {
   const [passwordLength, setPasswordLength] = useState(15);
   const [isUserError, setIsUserError] = useState(false);
   const [checkBox, setCheckBox] = useState({
-    alphabets: true,
+    uppercase: true,
+    lowercase: true,
     numbers: true,
     specialChar: true,
   });
+  const [excludeCharacters, setExcludeCharacters] = useState("");
 
   // Checkbox options for password generation
   const options = [
-    { name: "Alphabets", enabled: checkBox.alphabets, generator: "alphabet" },
+    { name: "Uppercase", enabled: checkBox.uppercase, generator: "uppercase" },
+    { name: "Lowercase", enabled: checkBox.lowercase, generator: "lowercase" },
     { name: "Numbers", enabled: checkBox.numbers, generator: "number" },
     {
       name: "Special Characters",
@@ -29,13 +32,17 @@ const PasswordGenerator = () => {
 
   // Character generators for each option
   const generators = {
-    alphabet: () => {
-      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      return text[Math.trunc(Math.random() * 51)];
+    uppercase: () => {
+      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      return text[Math.trunc(Math.random() * 25)];
+    },
+    lowercase: () => {
+      const text = "abcdefghijklmnopqrstuvwxyz";
+      return text[Math.trunc(Math.random() * 25)];
     },
     number: () => {
       const text = "0123456789";
-      return text[Math.trunc(Math.random() * 9)];
+      return text[Math.trunc(Math.random() * 10)];
     },
     specialChar: () => {
       const text = "!@#$%^&*()-=[]{}/?<>_";
@@ -54,10 +61,11 @@ const PasswordGenerator = () => {
     let generatedPassword = "";
     let i = 0;
     while (i < passwordLength) {
-      const randomOption =
-        selectedOptions[Math.trunc(Math.random() * selectedOptions.length)];
-      generatedPassword += generators[randomOption.generator]();
-      i++;
+      const randomOption = generators[selectedOptions[Math.trunc(Math.random() * selectedOptions.length)].generator]();
+        if(!excludeCharacters.includes(randomOption)) {
+          generatedPassword += randomOption;
+        i++;
+        }
     }
     setPassword(generatedPassword);
   };
@@ -150,8 +158,13 @@ const PasswordGenerator = () => {
             />
           </div>
           <CheckBoxWithLabel
-            label="alphabets"
-            isChecked={checkBox.alphabets}
+            label="uppercase"
+            isChecked={checkBox.uppercase}
+            handleCheckBoxClick={handleCheckBoxClick}
+          />
+          <CheckBoxWithLabel
+            label="lowercase"
+            isChecked={checkBox.lowercase}
             handleCheckBoxClick={handleCheckBoxClick}
           />
           <CheckBoxWithLabel
@@ -164,6 +177,18 @@ const PasswordGenerator = () => {
             isChecked={checkBox.specialChar}
             handleCheckBoxClick={handleCheckBoxClick}
           />
+          <div className="mt-4">
+            <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+              Exclude Characters:
+            </label>
+            <input
+              type="text"
+              className="w-52 text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              placeholder="Enter characters to exclude"
+              value={excludeCharacters}
+              onChange={(e) => setExcludeCharacters(e.target.value)}
+            />
+          </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <img
