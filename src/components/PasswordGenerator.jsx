@@ -101,9 +101,7 @@ const PasswordGenerator = () => {
     setMessage("Create. Protect. Secure. Generate your password now");
     setIsUserError(false);
   };
-  
 
-  // console.log(checkBoxes)
   return (
     <section className="text-gray-600 body-font dark:text-gray-400">
       <div className="container max-w-screen-xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
