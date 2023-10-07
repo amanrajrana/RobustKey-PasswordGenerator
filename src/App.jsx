@@ -1,19 +1,19 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
+import Contributors from "./components/Contributors";
 import Home from "./components/Home";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import About from "./components/About";
+
 
 function App() {
   return (
     <div className="dark:bg-gray-900 dark:text-white">
-      {/* <Home /> */}
-      <HashRouter >
-        <Routes basename="/RobustKey-PasswordGenerator">
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </HashRouter>
+      <Header />
+      <Routes>
+        <Route path="/RobustKey-PasswordGenerator" element={<Home />} />
+        <Route path="RobustKey-passwordGenerator/contributors" element={<Contributors />} />
+        <Route path="/RobustKey-PasswordGenerator/about" element={<About />} />
+      </Routes>
     </div>
   );
 }

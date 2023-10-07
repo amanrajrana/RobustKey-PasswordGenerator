@@ -1,21 +1,50 @@
-# Configuration for welcome - https://github.com/behaviorbot/welcome
+newIssueWelcomeComment: |
+  🔍 **New Issue Opened** 🔍
 
-# Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
+  Thanks for opening an issue! This project is a great starting point for open-source contributors.
 
-# Comment to be posted to on first time issues
-newIssueWelcomeComment: >
-  💖Thanks for opening your first issue here! Be sure to star ⭐ the repo !💖
+  Please provide details about the issue, and we'll look into it. Be sure to include context, steps to reproduce, and project version (if relevant). Feel free to add screenshots or code examples.
 
-# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
+  We'll prioritize and keep you updated. Your input is valuable as a new open-source contributor.
 
-# Comment to be posted to on PRs from first time contributors in your repository
-newPRWelcomeComment: >
-  💖Thanks for opening this pull request! Please check out our contributing guidelines.💖
+  Appreciate your involvement!
 
-# Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
+  Best,
+  [RobustKey](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+ 
 
-# Comment to be posted to on pull requests merged by a first time user
-firstPRMergeComment: >
-  Congrats on merging your first pull request! We here at StarterHive are proud of you!🎉🎉🎉
+
+newPRWelcomeComment: |
+  🛠️ **Pull Request Opened** 🛠️
+  💖Thanks for the PR| Be sure to star ⭐ the repo !💖
+  
+  **Please:**
+  1. Describe your changes.
+  2. Link to the related issue.
+  4. Update documentation if needed.
+
+  Our team will review it soon. Feel free to ask questions.
+
+  Thanks for contributing!
+
+  Best,
+  [RobustKey](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  Happy Coding
+
+
+firstPRMergeComment: |
+  🎉 **Congratulations!** 🎉
+  Your pull request has been **approved** and is now **merged** into the project! 🚀 Thank you for your valuable contribution to our open-source community.
+  
+  Your dedication and hard work have made our project even better. We truly appreciate your effort in helping us improve and grow.
+  
+  If you have any more ideas, suggestions, or contributions in the future, please don't hesitate to reach out. We welcome your continued involvement in our project.
+  
+  Once again, thank you for your commitment and for making a positive impact on our open-source journey. 🙌
+  
+  Cheers,
+  [RobustKey Team](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  Happy Coding
+
 
 # It is recommended to include as many gifs and emojis as possible!

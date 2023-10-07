@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import SunImage from '../../images/sun.png'
-import MoonImage from '../../images/moon.png'
+import SunImage from "../../images/sun.png";
+import MoonImage from "../../images/moon.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -33,19 +33,32 @@ const Header = () => {
   return (
     <header className="text-white body-font bg-indigo-700">
       <div className="container mx-auto flex flex-wrap px-4 max-w-screen-xl py-3 flex-col md:flex-row items-center">
-        <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <Link
+          to="/RobustKey-PasswordGenerator"
+          className="flex title-font font-medium items-center text-white mb-4 md:mb-0"
+        >
           <span className="ml-3 text-xl">RobustKey</span>
-        </a>
+        </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <a className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            <Link to="/">Home</Link>
-          </a>
-          <a href="/about" className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-          <Link to="/about">About</Link>
-          </a>
-          <a href="/contact" className="mr-5 cursor-pointer opacity-90 hover:opacity-100">
-            <Link to="/contact">Contact</Link>
-          </a>
+          <Link
+            to="/RobustKey-PasswordGenerator"
+            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+          >
+            Home
+          </Link>
+          <Link
+            to="RobustKey-PasswordGenerator/about"
+            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+          >
+            About
+          </Link>
+
+          <Link
+            to="/RobustKey-PasswordGenerator/contributors"
+            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+          >
+            Contributors
+          </Link>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"

@@ -11,14 +11,17 @@ const PasswordGenerator = () => {
   const [passwordLength, setPasswordLength] = useState(15);
   const [isUserError, setIsUserError] = useState(false);
   const [checkBox, setCheckBox] = useState({
-    alphabets: true,
+    uppercase: true,
+    lowercase: true,
     numbers: true,
     specialChar: true,
   });
+  const [excludeCharacters, setExcludeCharacters] = useState("");
 
   // Checkbox options for password generation
   const options = [
-    { name: "Alphabets", enabled: checkBox.alphabets, generator: "alphabet" },
+    { name: "Uppercase", enabled: checkBox.uppercase, generator: "uppercase" },
+    { name: "Lowercase", enabled: checkBox.lowercase, generator: "lowercase" },
     { name: "Numbers", enabled: checkBox.numbers, generator: "number" },
     {
       name: "Special Characters",
@@ -29,20 +32,25 @@ const PasswordGenerator = () => {
 
   // Character generators for each option
   const generators = {
-    alphabet: () => {
-      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      return text[Math.trunc(Math.random() * 51)];
+    uppercase: () => {
+      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      return text[Math.trunc(Math.random() * 25)];
+    },
+    lowercase: () => {
+      const text = "abcdefghijklmnopqrstuvwxyz";
+      return text[Math.trunc(Math.random() * 25)];
     },
     number: () => {
       const text = "0123456789";
-      return text[Math.trunc(Math.random() * 9)];
+      return text[Math.trunc(Math.random() * 10)];
     },
     specialChar: () => {
-      const text = "!@#$%^&*()-=[]{}/?<>_";
-      return text[Math.trunc(Math.random() * 20)];
+      const text = "!@#$%^&*()-=[]{}/|,~:;?<>_\"\\'";
+      return text[Math.trunc(Math.random() * 29)];
     },
   };
 
+  // Handle generate password button click
   const handleGeneratePass = () => {
     const selectedOptions = options.filter((option) => option.enabled);
     if (selectedOptions.length < 1) {
@@ -55,13 +63,19 @@ const PasswordGenerator = () => {
     let i = 0;
     while (i < passwordLength) {
       const randomOption =
-        selectedOptions[Math.trunc(Math.random() * selectedOptions.length)];
-      generatedPassword += generators[randomOption.generator]();
-      i++;
+        generators[
+          selectedOptions[Math.trunc(Math.random() * selectedOptions.length)]
+            .generator
+        ]();
+      if (!excludeCharacters.includes(randomOption)) {
+        generatedPassword += randomOption;
+        i++;
+      }
     }
     setPassword(generatedPassword);
   };
 
+  // Copy password to clipboard
   const copyPassword = () => {
     if (password.length < 1) {
       return;
@@ -80,12 +94,20 @@ const PasswordGenerator = () => {
     }
   };
 
+  // Handle checkbox click
   const handleCheckBoxClick = (e) => {
     const { name, checked } = e.target;
     setCheckBox((prev) => ({ ...prev, [name]: checked }));
     setMessage("Create. Protect. Secure. Generate your password now");
     setIsUserError(false);
   };
+
+  const checkBoxOptions = [
+    { label: "uppercase", key: "uppercase" },
+    { label: "lowercase", key: "lowercase" },
+    { label: "numbers", key: "numbers" },
+    { label: "specialChar", key: "specialChar" },
+  ];
 
   return (
     <section className="text-gray-600 body-font dark:text-gray-400">
@@ -149,21 +171,28 @@ const PasswordGenerator = () => {
               onChange={(e) => setPasswordLength(e.target.value)}
             />
           </div>
-          <CheckBoxWithLabel
-            label="alphabets"
-            isChecked={checkBox.alphabets}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="numbers"
-            isChecked={checkBox.numbers}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="specialChar"
-            isChecked={checkBox.specialChar}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
+
+          {checkBoxOptions.map((option) => (
+            <CheckBoxWithLabel
+              key={option.key}
+              label={option.label}
+              isChecked={checkBox[option.key]}
+              handleCheckBoxClick={handleCheckBoxClick}
+            />
+          ))}
+
+          <div className="mt-4">
+            <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+              Exclude Characters:
+            </label>
+            <input
+              type="text"
+              className="w-52 text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              placeholder="Enter characters to exclude"
+              value={excludeCharacters}
+              onChange={(e) => setExcludeCharacters(e.target.value)}
+            />
+          </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <img
