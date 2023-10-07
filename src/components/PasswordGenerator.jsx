@@ -27,7 +27,13 @@ const PasswordGenerator = () => {
       generator: "specialChar",
     },
   ];
-
+  
+  const checkBoxOptions = [
+    { label: 'uppercase', key: 'uppercase' },
+    { label: 'lowercase', key: 'lowercase' },
+    { label: 'numbers', key: 'numbers' },
+    { label: 'specialChar', key: 'specialChar' }
+  ];
   // Character generators for each option
   const generators = {
     alphabet: () => {
@@ -151,21 +157,28 @@ const PasswordGenerator = () => {
               onChange={(e) => setPasswordLength(e.target.value)}
             />
           </div>
-          <CheckBoxWithLabel
-            label="alphabets"
-            isChecked={checkBox.alphabets}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="numbers"
-            isChecked={checkBox.numbers}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="specialChar"
-            isChecked={checkBox.specialChar}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
+          <div style={{display:"flex", flexDirection: "column"}}>
+            {checkBoxOptions.map(option => (
+             <CheckBoxWithLabel
+               key={option.key}
+               label={option.label}
+               isChecked={checkBox[option.key]}
+               handleCheckBoxClick={handleCheckBoxClick}
+             />
+            ))}
+          </div>
+          <div className="mt-4">
+            <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+              Exclude Characters:
+            </label>
+            <input
+              type="text"
+              className="w-52 text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              placeholder="Enter characters to exclude"
+              value={excludeCharacters}
+              onChange={(e) => setExcludeCharacters(e.target.value)}
+            />
+          </div>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <img
