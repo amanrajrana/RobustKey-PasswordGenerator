@@ -1,4 +1,4 @@
-newIssueWelcomeComment: >
+newIssueWelcomeComment: |
   🔍 **New Issue Opened** 🔍
 
   Thanks for opening an issue! This project is a great starting point for open-source contributors.
@@ -10,10 +10,11 @@ newIssueWelcomeComment: >
   Appreciate your involvement!
 
   Best,
-  [RobustKe](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  [RobustKey](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+ 
 
 
-newPRWelcomeComment: >
+newPRWelcomeComment: |
   🛠️ **Pull Request Opened** 🛠️
   💖Thanks for the PR| Be sure to star ⭐ the repo !💖
   
@@ -27,10 +28,11 @@ newPRWelcomeComment: >
   Thanks for contributing!
 
   Best,
-  [RobustKe](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  [RobustKey](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  Happy Coding
 
 
-firstPRMergeComment: >
+firstPRMergeComment: |
   🎉 **Congratulations!** 🎉
   Your pull request has been **approved** and is now **merged** into the project! 🚀 Thank you for your valuable contribution to our open-source community.
   
@@ -42,6 +44,7 @@ firstPRMergeComment: >
   
   Cheers,
   [RobustKey Team](https://github.com/amanrajrana/RobustKey-PasswordGenerator)
+  Happy Coding
 
 
 # It is recommended to include as many gifs and emojis as possible!
