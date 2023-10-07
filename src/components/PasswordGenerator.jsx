@@ -29,7 +29,13 @@ const PasswordGenerator = () => {
       generator: "specialChar",
     },
   ];
-
+  
+  const checkBoxOptions = [
+    { label: 'uppercase', key: 'uppercase' },
+    { label: 'lowercase', key: 'lowercase' },
+    { label: 'numbers', key: 'numbers' },
+    { label: 'specialChar', key: 'specialChar' }
+  ];
   // Character generators for each option
   const generators = {
     uppercase: () => {
@@ -157,26 +163,16 @@ const PasswordGenerator = () => {
               onChange={(e) => setPasswordLength(e.target.value)}
             />
           </div>
-          <CheckBoxWithLabel
-            label="uppercase"
-            isChecked={checkBox.uppercase}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="lowercase"
-            isChecked={checkBox.lowercase}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="numbers"
-            isChecked={checkBox.numbers}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
-          <CheckBoxWithLabel
-            label="specialChar"
-            isChecked={checkBox.specialChar}
-            handleCheckBoxClick={handleCheckBoxClick}
-          />
+          <div style={{display:"flex", flexDirection: "column"}}>
+            {checkBoxOptions.map(option => (
+             <CheckBoxWithLabel
+               key={option.key}
+               label={option.label}
+               isChecked={checkBox[option.key]}
+               handleCheckBoxClick={handleCheckBoxClick}
+             />
+            ))}
+          </div>
           <div className="mt-4">
             <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
               Exclude Characters:
