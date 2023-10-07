@@ -1,7 +1,6 @@
 import { useState } from "react";
-import {GrCopy} from "react-icons/gr"
 import CheckBoxWithLabel from "./checkBoxWithLabel";
-// import CopyClipboard from "../assets/CopyClipboard";
+import CopyClipboard from "../assets/CopyClipboard";
 
 const PasswordGenerator = () => {
   // State variables
@@ -12,14 +11,17 @@ const PasswordGenerator = () => {
   const [passwordLength, setPasswordLength] = useState(15);
   const [isUserError, setIsUserError] = useState(false);
   const [checkBox, setCheckBox] = useState({
-    alphabets: true,
+    uppercase: true,
+    lowercase: true,
     numbers: true,
     specialChar: true,
   });
+  const [excludeCharacters, setExcludeCharacters] = useState("");
 
   // Checkbox options for password generation
   const options = [
-    { name: "Alphabets", enabled: checkBox.alphabets, generator: "alphabet" },
+    { name: "Uppercase", enabled: checkBox.uppercase, generator: "uppercase" },
+    { name: "Lowercase", enabled: checkBox.lowercase, generator: "lowercase" },
     { name: "Numbers", enabled: checkBox.numbers, generator: "number" },
     {
       name: "Special Characters",
@@ -36,13 +38,17 @@ const PasswordGenerator = () => {
   ];
   // Character generators for each option
   const generators = {
-    alphabet: () => {
-      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-      return text[Math.trunc(Math.random() * 51)];
+    uppercase: () => {
+      const text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      return text[Math.trunc(Math.random() * 25)];
+    },
+    lowercase: () => {
+      const text = "abcdefghijklmnopqrstuvwxyz";
+      return text[Math.trunc(Math.random() * 25)];
     },
     number: () => {
       const text = "0123456789";
-      return text[Math.trunc(Math.random() * 9)];
+      return text[Math.trunc(Math.random() * 10)];
     },
     specialChar: () => {
       const text = "!@#$%^&*()-=[]{}/?<>_";
@@ -61,10 +67,11 @@ const PasswordGenerator = () => {
     let generatedPassword = "";
     let i = 0;
     while (i < passwordLength) {
-      const randomOption =
-        selectedOptions[Math.trunc(Math.random() * selectedOptions.length)];
-      generatedPassword += generators[randomOption.generator]();
-      i++;
+      const randomOption = generators[selectedOptions[Math.trunc(Math.random() * selectedOptions.length)].generator]();
+        if(!excludeCharacters.includes(randomOption)) {
+          generatedPassword += randomOption;
+        i++;
+        }
     }
     setPassword(generatedPassword);
   };
@@ -112,19 +119,17 @@ const PasswordGenerator = () => {
                 className="placeholder:italic w-full text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out tracking-widest active:relative active:top-0.5 text-ellipsis"
                 value={password}
                 readOnly
-                placeholder="Click the icon on right to copy password"
+                placeholder="Click Generate to Generate Password"
               />
-              
               <button
                 onClick={copyPassword}
                 className="absolute right-0 top-0 bottom-0 m-auto mr-2 cursor-pointer"
               >
-                {password ? <GrCopy /> : ""}
+                {password ? <CopyClipboard /> : ""}
               </button>
             </div>
-            {/* <GrCopy size={35} className="mr-3"/> */}
             <button
-              className="inline-flex text-white bg-indigo-600 border-0 py-2 px-6  focus:outline-none hover:bg-indigo-700 rounded text-lg active:relative active:top-0.5"
+              className="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg active:relative active:top-0.5"
               onClick={handleGeneratePass}
             >
               Generate
@@ -151,6 +156,7 @@ const PasswordGenerator = () => {
             <input
               className="w-16 text-center p-1 bg-gray-100 rounded border bg-opacity-50 border-gray-300 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"
               type="number"
+              min={0}
               max={30}
               name="passwordLength"
               value={passwordLength}
