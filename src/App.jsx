@@ -1,8 +1,9 @@
 import Contributors from "./components/Contributors";
-import Home from "./components/home";
+import Home from "./components/Home";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import About from "./components/About";
+
 
 function App() {
   return (

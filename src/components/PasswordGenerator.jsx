@@ -120,8 +120,8 @@ const PasswordGenerator = () => {
             Generate strong, secure passwords instantly. Safeguard your accounts
             with ease. Take control of your online security now.
           </p>
-          <div className="flex gap-2 w-full md:justify-start justify-center items-end">
-            <div className="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full md:justify-start justify-center items-end ">
+            <div className="relative mr-4 w-[96%] md:w-full lg:w-full xl:w-1/2 ">
               <input
                 type="text"
                 className="placeholder:italic w-full text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out tracking-widest active:relative active:top-0.5 text-ellipsis"
@@ -137,7 +137,7 @@ const PasswordGenerator = () => {
               </button>
             </div>
             <button
-              className="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg active:relative active:top-0.5"
+              className="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg active:relative active:top-0.5 m-auto lg:m-0"
               onClick={handleGeneratePass}
             >
               Generate
