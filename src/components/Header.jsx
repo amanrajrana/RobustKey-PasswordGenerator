@@ -3,9 +3,11 @@ import { useEffect } from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
 import { Link } from "react-router-dom";
+import Hamburger from "hamburger-react";
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const changeTheme = () => {
     if (
@@ -30,32 +32,99 @@ const Header = () => {
 
   // Whenever the user explicitly chooses to respect the OS preference
   localStorage.removeItem("theme");
+
   return (
-    <header className="text-white body-font bg-indigo-700">
-      <div className="container mx-auto flex flex-wrap px-4 max-w-screen-xl py-3 flex-col md:flex-row items-center">
-        <Link
-          to="/"
-          className="flex title-font font-medium items-center text-white mb-4 md:mb-0"
+    // <header className="text-white body-font bg-indigo-700">
+    //   <div className="container mx-auto flex px-4 max-w-screen-xl py-3 flex-row justify-between items-center">
+    //     <Link
+    //       to="/"
+    //       className="flex title-font font-medium items-center text-white mb-4 md:mb-0 relative top-1 sm:top-0"
+    //     >
+    //       <span className="ml-3 text-xl">RobustKey</span>
+    //     </Link>
+
+    //     <div className="relative block sm:hidden left-16">
+    //       <Hamburger toggled={isOpen} toggle={setOpen} />
+    //       {console.log(isOpen)}
+    //     </div>
+
+    //     <div className="relative">
+    //       <nav className="md:ml-auto flex flex-col sm:flex-row items-center text-base justify-center">
+    //         <Link
+    //           to="/"
+    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+    //         >
+    //           Home
+    //         </Link>
+    //         <Link
+    //           to="/about"
+    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+    //         >
+    //           About
+    //         </Link>
+
+    //         <Link
+    //           to="/contributors"
+    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+    //         >
+    //           Contributors
+    //         </Link>
+    //         <img
+    //           src={isDarkTheme ? SunImage : MoonImage}
+    //           id="icon"
+    //           width={30}
+    //           height={30}
+    //           onClick={() => setIsDarkTheme(!isDarkTheme)}
+    //           className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
+    //         ></img>
+    //       </nav>
+    //     </div>
+    //   </div>
+    // </header>
+    <>
+      <nav className="relative w-full h-16 text-white bg-indigo-700 flex flex-col sm:flex-row items-center justify-between px-0 sm:px-4 lg:px-32 xl:px-36">
+        {/* utility items */}
+        <div className="relative flex flex-row justify-between gap-36 items-center pt-1">
+          <Link to="/" className="title-font font-medium text-2xl">
+            RobustKey
+          </Link>
+          <div className="flex flex-row justify-center items-center gap-2">
+            <div className="relative block sm:hidden">
+              <Hamburger toggled={isOpen} toggle={setOpen} />
+              {console.log(isOpen)}
+            </div>
+            <img
+              src={isDarkTheme ? SunImage : MoonImage}
+              id="icon"
+              width={30}
+              height={30}
+              onClick={() => setIsDarkTheme(!isDarkTheme)}
+              className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
+            ></img>
+          </div>
+        </div>
+
+        {/* routes */}
+        <div
+          className={`relative flex flex-col sm:flex-row sm:gap-2 max-[600px]:w-full top-2 sm:top-0 z-30 ${
+            isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
+          }`}
         >
-          <span className="ml-3 text-xl">RobustKey</span>
-        </Link>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <Link
             to="/"
-            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             Home
           </Link>
           <Link
             to="/about"
-            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             About
           </Link>
-
           <Link
             to="/contributors"
-            className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
+            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             Contributors
           </Link>
@@ -65,11 +134,11 @@ const Header = () => {
             width={30}
             height={30}
             onClick={() => setIsDarkTheme(!isDarkTheme)}
-            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
+            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 hidden sm:inline"
           ></img>
-        </nav>
-      </div>
-    </header>
+        </div>
+      </nav>
+    </>
   );
 };
 export default Header;
