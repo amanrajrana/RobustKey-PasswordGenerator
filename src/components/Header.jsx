@@ -34,53 +34,6 @@ const Header = () => {
   localStorage.removeItem("theme");
 
   return (
-    // <header className="text-white body-font bg-indigo-700">
-    //   <div className="container mx-auto flex px-4 max-w-screen-xl py-3 flex-row justify-between items-center">
-    //     <Link
-    //       to="/"
-    //       className="flex title-font font-medium items-center text-white mb-4 md:mb-0 relative top-1 sm:top-0"
-    //     >
-    //       <span className="ml-3 text-xl">RobustKey</span>
-    //     </Link>
-
-    //     <div className="relative block sm:hidden left-16">
-    //       <Hamburger toggled={isOpen} toggle={setOpen} />
-    //       {console.log(isOpen)}
-    //     </div>
-
-    //     <div className="relative">
-    //       <nav className="md:ml-auto flex flex-col sm:flex-row items-center text-base justify-center">
-    //         <Link
-    //           to="/"
-    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
-    //         >
-    //           Home
-    //         </Link>
-    //         <Link
-    //           to="/about"
-    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
-    //         >
-    //           About
-    //         </Link>
-
-    //         <Link
-    //           to="/contributors"
-    //           className="mr-5 cursor-pointer opacity-90 hover:opacity-100"
-    //         >
-    //           Contributors
-    //         </Link>
-    //         <img
-    //           src={isDarkTheme ? SunImage : MoonImage}
-    //           id="icon"
-    //           width={30}
-    //           height={30}
-    //           onClick={() => setIsDarkTheme(!isDarkTheme)}
-    //           className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
-    //         ></img>
-    //       </nav>
-    //     </div>
-    //   </div>
-    // </header>
     <>
       <nav className="relative w-full h-16 text-white bg-indigo-700 flex flex-col sm:flex-row items-center justify-between px-0 sm:px-4 lg:px-32 xl:px-36">
         {/* utility items */}
@@ -91,7 +44,6 @@ const Header = () => {
           <div className="flex flex-row justify-center items-center gap-2">
             <div className="relative block sm:hidden">
               <Hamburger toggled={isOpen} toggle={setOpen} />
-              {console.log(isOpen)}
             </div>
             <img
               src={isDarkTheme ? SunImage : MoonImage}
