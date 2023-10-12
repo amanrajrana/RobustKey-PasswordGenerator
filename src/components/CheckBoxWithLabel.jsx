@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const CheckBoxWithLabel = ({label, isChecked, handleCheckBoxClick}) => {
+const CheckBoxWithLabel = ({label, isChecked, handleCheckBoxClick }) => {
   return (
     <div className="flex gap-2">
       <input
@@ -10,15 +10,17 @@ const CheckBoxWithLabel = ({label, isChecked, handleCheckBoxClick}) => {
         checked={isChecked}
         onChange={handleCheckBoxClick}
       />
-      <label htmlFor={label}>{label}</label>
+      <label className="w-24" htmlFor={label}>
+        {label}
+      </label>
     </div>
   );
 };
 
 CheckBoxWithLabel.propTypes = {
-    label: PropTypes.string.isRequired,
-    handleCheckBoxClick: PropTypes.func.isRequired,
-    isChecked: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  handleCheckBoxClick: PropTypes.func.isRequired,
+  isChecked: PropTypes.bool.isRequired,
 };
 
 export default CheckBoxWithLabel;
