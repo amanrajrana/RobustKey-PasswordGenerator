@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
+import Github_logo from "../../images/github-logo.png"
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 
@@ -45,6 +46,15 @@ const Header = () => {
             <div className="relative block sm:hidden">
               <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
+            <a href="https://github.com/amanrajrana/RobustKey-PasswordGenerator" target="blank">
+          <img
+            src={Github_logo}
+            id="icon"
+            width={30}
+            height={30}
+            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
+          ></img>
+          </a>
             <img
               src={isDarkTheme ? SunImage : MoonImage}
               id="icon"
@@ -80,6 +90,15 @@ const Header = () => {
           >
             Contributors
           </Link>
+          <a href="https://github.com/amanrajrana/RobustKey-PasswordGenerator" target="blank">
+          <img
+            src={Github_logo}
+            id="icon"
+            width={30}
+            height={30}
+            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
+          ></img>
+          </a>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
