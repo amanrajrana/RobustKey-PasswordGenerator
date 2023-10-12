@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 
 const Header = () => {
@@ -62,24 +62,29 @@ const Header = () => {
             isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
           }`}
         >
-          <Link
+          <NavLink
             to="/"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
+            activeClassName="navbar__NavLink--active"
+            className="navbar__NavLink relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             Home
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/about"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
+            activeClassName="navbar__NavLink--active"
+
+            className="navbar__NavLink relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             About
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/contributors"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
+            activeClassName="navbar__NavLink--active"
+
+            className="navbar__NavLink relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
           >
             Contributors
-          </Link>
+          </NavLink>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
