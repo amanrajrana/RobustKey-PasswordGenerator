@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Hamburger from "hamburger-react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
-import { Link } from "react-router-dom";
-import Hamburger from "hamburger-react";
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const location = useLocation(); // Get the current location
 
   const changeTheme = () => {
     if (
@@ -62,24 +62,9 @@ const Header = () => {
             isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
           }`}
         >
-          <Link
-            to="/"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            About
-          </Link>
-          <Link
-            to="/contributors"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            Contributors
-          </Link>
+          <NavLink to="/" isActive={location.pathname === '/'} label="Home" />
+          <NavLink to="/about" isActive={location.pathname === '/about'} label="About" />
+          <NavLink to="/contributors" isActive={location.pathname === '/contributors'} label="Contributors" />
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
@@ -93,4 +78,19 @@ const Header = () => {
     </>
   );
 };
+
+// Create a custom NavLink component to style the active link differently
+const NavLink = ({ to, isActive, label }) => (
+  <Link
+    to={to}
+    className={`relative sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 ${
+      isActive
+        ? 'bg-indigo-900 border-b-2' // Change the background color and add a bottom border for the active link
+        : 'hover:bg-indigo-900 hover:border-b-2' // Add hover effect and a bottom border when hovering
+    }`}
+  >
+    {label}
+  </Link>
+);
+
 export default Header;
