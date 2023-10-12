@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import SunImage from "../../images/sun.png";
-import MoonImage from "../../images/moon.png";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
+import SunImage from "../../images/sun.png";
+import MoonImage from "../../images/moon.png";
+import GithubIcon from "../../images/github_logo.png";
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -30,14 +30,10 @@ const Header = () => {
     changeTheme();
   }, [isDarkTheme]);
 
-  // Whenever the user explicitly chooses to respect the OS preference
-  localStorage.removeItem("theme");
-
   return (
     <>
       <nav className="relative w-full h-16 text-white bg-indigo-700 flex flex-col sm:flex-row items-center justify-between px-0 sm:px-4 lg:px-32 xl:px-36">
-        {/* utility items */}
-        <div className="relative flex flex-row justify-between gap-36 items-center pt-1">
+        <div className="flex items-center justify-between gap-6 pt-1">
           <Link to="/" className="title-font font-medium text-2xl">
             RobustKey
           </Link>
@@ -45,6 +41,19 @@ const Header = () => {
             <div className="relative block sm:hidden">
               <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
+            <a
+              href="https://github.com/amanrajrana/RobustKey-PasswordGenerator"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={GithubIcon}
+                id="icon"
+                width={30}
+                height={30}
+                className="cursor-pointer opacity-90 hover:opacity-100 filter sm:hidden"
+              ></img>
+            </a>
             <img
               src={isDarkTheme ? SunImage : MoonImage}
               id="icon"
@@ -56,11 +65,10 @@ const Header = () => {
           </div>
         </div>
 
-        {/* routes */}
         <div
-          className={`relative flex flex-col sm:flex-row sm:gap-2 max-[600px]:w-full top-2 sm:top-0 z-30 ${
+          className={`flex flex-col  sm:flex-row sm:gap-2 max-[600px]:w-full top-2 sm:top-0 z-30 ${
             isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
-          }`}
+          } `}
         >
           <Link
             to="/"
@@ -80,6 +88,23 @@ const Header = () => {
           >
             Contributors
           </Link>
+        </div>
+
+        <div className="flex items-center gap-8">
+          <a
+            href="https://github.com/amanrajrana/RobustKey-PasswordGenerator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={GithubIcon}
+              alt="GitHub icon"
+              width={26}
+              height={26}
+              className="cursor-pointer opacity-90 hover:opacity-100 filter hidden sm:inline"
+            />
+          </a>
+
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
@@ -93,4 +118,5 @@ const Header = () => {
     </>
   );
 };
+
 export default Header;
