@@ -2,8 +2,23 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Hamburger from "hamburger-react";
+
+const ROUTES = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+  {
+    title: "Contributors",
+    path: "/contributors",
+  },
+];
 
 const Header = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -32,6 +47,7 @@ const Header = () => {
 
   // Whenever the user explicitly chooses to respect the OS preference
   localStorage.removeItem("theme");
+
 
   return (
     <>
@@ -62,24 +78,18 @@ const Header = () => {
             isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
           }`}
         >
-          <Link
-            to="/"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            About
-          </Link>
-          <Link
-            to="/contributors"
-            className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
-          >
-            Contributors
-          </Link>
+          {ROUTES.map((route) => (
+            <NavLink
+              style={({ isActive }) => {
+                return isActive ? { borderBottom: "1px solid white" } : {};
+              }}
+              to={route.path}
+              key={route.path}
+              className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
+            >
+              {route.title}
+            </NavLink>
+          ))}
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
