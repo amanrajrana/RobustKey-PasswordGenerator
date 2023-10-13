@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
-import Github_logo from "../../images/github-logo.svg"
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 
@@ -43,16 +42,10 @@ const Header = () => {
             RobustKey
           </Link>
           <div className="flex flex-row justify-center items-center gap-2">
-          <a href="https://github.com/amanrajrana/RobustKey-PasswordGenerator" target="blank">
-          <img
-            src={Github_logo}
-            id="icon"
-            width={30}
-            height={30}
-            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
-          ></img>
-          </a>
-          <img
+            <div className="relative block sm:hidden">
+              <Hamburger toggled={isOpen} toggle={setOpen} />
+            </div>
+            <img
               src={isDarkTheme ? SunImage : MoonImage}
               id="icon"
               width={30}
@@ -60,9 +53,6 @@ const Header = () => {
               onClick={() => setIsDarkTheme(!isDarkTheme)}
               className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
             ></img>
-            <div className="relative block sm:hidden">
-              <Hamburger toggled={isOpen} toggle={setOpen} />
-            </div>
           </div>
         </div>
 
@@ -72,7 +62,6 @@ const Header = () => {
             isOpen ? "opacity-100" : "sm:opacity-100 opacity-0"
           }`}
         >
-          <div className="flex justify-center items-center">
           <Link
             to="/"
             className="relative bg-indigo-700 sm:px-2 pl-8 sm:py-1 py-3 cursor-pointer opacity-90 hover:opacity-100"
@@ -91,16 +80,6 @@ const Header = () => {
           >
             Contributors
           </Link>
-          </div>
-          <a href="https://github.com/amanrajrana/RobustKey-PasswordGenerator" target="blank">
-          <img
-            src={Github_logo}
-            id="icon"
-            width={30}
-            height={30}
-            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
-          ></img>
-          </a>
           <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
