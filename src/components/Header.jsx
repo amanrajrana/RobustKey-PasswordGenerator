@@ -37,13 +37,11 @@ const Header = () => {
       <nav className="relative w-full h-16 text-white bg-indigo-700 flex flex-col sm:flex-row items-center justify-between px-0 sm:px-4 lg:px-32 xl:px-36">
         {/* utility items */}
         <div className="relative flex flex-row justify-between gap-6 items-center pt-1">
-          <Link to="/" className="title-font font-medium text-2xl">
+          <Link to="/" className="title-font font-medium text-2xl pr-10">
             RobustKey
           </Link>
           <div className="flex flex-row justify-center items-center gap-2">
-            <div className="relative block sm:hidden">
-              <Hamburger toggled={isOpen} toggle={setOpen} />
-            </div>
+           
             <a
               href="https://github.com/amanrajrana/RobustKey-PasswordGenerator"
               target="_blank"
@@ -65,6 +63,9 @@ const Header = () => {
               onClick={() => setIsDarkTheme(!isDarkTheme)}
               className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
             ></img>
+             <div className="relative block sm:hidden">
+              <Hamburger toggled={isOpen} toggle={setOpen} />
+            </div>
           </div>
         </div>
 
