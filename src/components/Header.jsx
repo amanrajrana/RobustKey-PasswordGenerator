@@ -7,31 +7,29 @@ import Hamburger from "hamburger-react";
 import GithubIcon from "../../images/github_logo.svg";
 
 const Header = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [isOpen, setOpen] = useState(false);
-  const changeTheme = () => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+
+  const [isDarkTheme, setIsDarkTheme] = useState(() => {
+    // check if theme is saved in local storage
+    if ("theme" in localStorage) {
+      return localStorage.theme === "dark";
     }
-  };
+
+    // check if system is in dark mode
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   useEffect(() => {
-    changeTheme();
-  }, []);
+    if (isDarkTheme) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+      return;
+    }
 
-  useEffect(() => {
-    localStorage.theme = isDarkTheme ? "dark" : "light";
-    changeTheme();
+    document.documentElement.classList.remove("dark");
+    localStorage.theme = "light";
   }, [isDarkTheme]);
 
-  // Whenever the user explicitly chooses to respect the OS preference
-  localStorage.removeItem("theme");
   return (
     <>
       <nav className="relative w-full h-16 text-white bg-indigo-700 flex flex-col sm:flex-row items-center justify-between px-0 sm:px-4 lg:px-32 xl:px-36">
@@ -41,7 +39,6 @@ const Header = () => {
             RobustKey
           </Link>
           <div className="flex flex-row justify-center items-center gap-2">
-           
             <a
               href="https://github.com/amanrajrana/RobustKey-PasswordGenerator"
               target="_blank"
@@ -63,7 +60,7 @@ const Header = () => {
               onClick={() => setIsDarkTheme(!isDarkTheme)}
               className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0 sm:hidden"
             ></img>
-             <div className="relative block sm:hidden">
+            <div className="relative block sm:hidden">
               <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
           </div>
