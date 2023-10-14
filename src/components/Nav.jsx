@@ -1,14 +1,19 @@
-import { useState } from "react";
+import React from "react";
 import SunImage from "../../images/sun.png";
 import MoonImage from "../../images/moon.png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import GithubIcon from "../../images/github_logo.svg";
 import NavItems from "./NavLink";
 import PropTypes from "prop-types";
+import "./Nav.css"; // Import the external CSS file
+
 
 const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const location = useLocation(); // Get the current location from React Router
 
   const NAV__ITEMS = [
     {
@@ -40,12 +45,20 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
           } bg-indigo-700 flex flex-col sm:opacity-100 absolute top-16 left-0 w-full gap-y-4 sm:flex-row gap-x-6 sm:static sm:w-max bg-opacity-90`}
         >
           {NAV__ITEMS.map((item, index) => (
-            <NavItems key={index} to={item.to} label={item.label} />
+            <Link
+              key={index}
+              to={item.to}
+              className={`${
+                location.pathname === item.to ? "text-lime-400" : "" // Customize the color as you prefer
+              }`}
+            >
+              {item.label}
+            </Link>
           ))}
         </div>
 
         <div className="flex flex-row justify-center items-center gap-x-4">
-          <img
+        <img
             src={isDarkTheme ? SunImage : MoonImage}
             id="icon"
             width={30}
@@ -71,6 +84,7 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
           <div className="sm:hidden">
             <Hamburger toggled={isNavOpen} toggle={setIsNavOpen} />
           </div>
+
         </div>
       </div>
     </nav>

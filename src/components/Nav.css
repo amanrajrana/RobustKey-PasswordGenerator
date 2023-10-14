@@ -1,0 +1,8 @@
+body {
+    overflow-y: scroll;
+  }
+  
+  /* Set a minimum height for the root container */
+  #root {
+    min-height: 100vh;
+  }
