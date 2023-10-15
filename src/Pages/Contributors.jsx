@@ -1,28 +1,10 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import Section from "../components/Section";
+import contributorsContext from "../contexts/contributors/contributorsContext";
 
 const Contributors = () => {
-  const [contributors, setContributors] = useState([]);
-  const [randomNumber, setRandomNumber] = useState(0); // To display random 5 contributors continuously
-
-  const randomNumberHandler = (length) => {
-    setRandomNumber(Math.trunc(Math.random() * (length - 4)));
-  };
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.github.com/repos/amanrajrana/RobustKey-PasswordGenerator/contributors"
-      )
-      .then((response) => {
-        setContributors(response.data);
-        randomNumberHandler(response.data.length);
-      })
-      .catch((error) => {
-        console.error("Error fetching contributors data:", error);
-      });
-  }, []);
+  const { contributors } = useContext(contributorsContext);
+  const randomNumber = Math.trunc(Math.random() * (contributors.length - 4));
 
   return (
     <>
