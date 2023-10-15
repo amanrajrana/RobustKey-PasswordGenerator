@@ -1,13 +1,11 @@
-import SunImage from "../../images/sun.png";
-import MoonImage from "../../images/moon.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
-import PropTypes from "prop-types";
 import NavLink from "./NavLink";
 import { AiFillGithub } from "react-icons/ai";
+import ThemeToggleButton from "./ThemeToggleButton";
 
-const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
+const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const NAV__ITEMS = [
@@ -45,14 +43,9 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
         </div>
 
         <div className="flex flex-row justify-center items-center gap-x-4">
-          <img
-            src={isDarkTheme ? SunImage : MoonImage}
-            id="icon"
-            width={30}
-            height={30}
-            onClick={() => setIsDarkTheme(!isDarkTheme)}
-            className="cursor-pointer opacity-90 hover:opacity-100 filter invert dark:invert-0"
-          />
+          <div>
+            <ThemeToggleButton />
+          </div>
           <a
             href="https://github.com/amanrajrana/RobustKey-PasswordGenerator"
             target="_blank"
@@ -72,11 +65,6 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
       </div>
     </nav>
   );
-};
-
-Nav.propTypes = {
-  isDarkTheme: PropTypes.bool.isRequired,
-  setIsDarkTheme: PropTypes.func.isRequired,
 };
 
 export default Nav;
