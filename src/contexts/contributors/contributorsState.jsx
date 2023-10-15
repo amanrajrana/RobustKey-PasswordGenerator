@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import contributorsContext from "./contributorsContext";
 import axios from "axios";
+import PropType from "prop-types";
 
 const ContributorsState = (props) => {
   const [contributors, setContributors] = useState([]);
@@ -20,10 +21,13 @@ const ContributorsState = (props) => {
 
   return (
     <contributorsContext.Provider value={{ contributors, setContributors }}>
-      {/* eslint-disable-next-line react/prop-types */}
       {props.children}
     </contributorsContext.Provider>
   );
+};
+
+ContributorsState.propTypes = {
+  children: PropType.node.isRequired,
 };
 
 export default ContributorsState;

@@ -26,7 +26,7 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
   ];
 
   return (
-    <nav className="w-full h-16 text-white bg-indigo-700 flex items-center px-4">
+    <nav className="w-full h-16 text-white bg-indigo-700 dark:bg-indigo-950 flex items-center px-4">
       {/* utility items */}
       <div className="flex w-full justify-between items-center max-w-screen-xl mx-auto">
         <Link to="/" className="title-font font-medium text-2xl">
@@ -37,7 +37,7 @@ const Nav = ({ isDarkTheme, setIsDarkTheme }) => {
         <div
           className={`${
             isNavOpen ? "opacity-100 px-8 py-4" : "opacity-0"
-          } bg-indigo-700 flex flex-col sm:opacity-100 absolute top-16 left-0 w-full gap-y-4 sm:flex-row gap-x-6 sm:static sm:w-max bg-opacity-90`}
+          } bg-indigo-700 dark:bg-indigo-950 flex flex-col sm:opacity-100 absolute top-16 left-0 w-full gap-y-4 sm:flex-row gap-x-6 sm:static sm:w-max bg-opacity-90`}
         >
           {NAV__ITEMS.map((item, index) => (
             <NavLink key={index} to={item.to} label={item.label} />
