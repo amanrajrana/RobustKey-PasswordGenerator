@@ -1,10 +1,8 @@
 import { useState } from "react";
 import CheckBoxWithLabel from "./checkBoxWithLabel";
 import CopyClipboard from "../assets/CopyClipboard";
-import { useAlert } from 'react-alert'
 
 const PasswordGenerator = () => {
-  const alert = useAlert()
   // State variables
   const [message, setMessage] = useState(
     "Create. Protect. Secure. Generate your password now"
@@ -86,13 +84,13 @@ const PasswordGenerator = () => {
       navigator.clipboard
         .writeText(password)
         .then(() => {
-          alert.show("Password copied", { type: 'success' });
+          alert("Password copied", { type: "success" });
         })
         .catch((error) => {
-          alert.show("Unable to copy text to clipboard:", error);
+          alert("Unable to copy text to clipboard:", error);
         });
     } else {
-      alert.show("unable to copy password!");
+      alert("unable to copy password!");
     }
   };
 
@@ -173,7 +171,7 @@ const PasswordGenerator = () => {
               onChange={(e) => setPasswordLength(e.target.value)}
             />
           </div>
-            
+
           {checkBoxOptions.map((option) => (
             <CheckBoxWithLabel
               key={option.key}

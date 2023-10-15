@@ -1,8 +1,8 @@
-import Contributors from "./components/Contributors";
-import Home from "./components/Home";
+import Contributors from "./Pages/Contributors";
+import Home from "./Pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
-import About from "./components/About";
+import About from "./Pages/About";
 import { useEffect, useState } from "react";
 
 function App() {

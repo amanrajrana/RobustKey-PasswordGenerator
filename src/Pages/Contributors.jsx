@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Section from "./Section";
+import Section from "../components/Section";
 
 const Contributors = () => {
   const [contributors, setContributors] = useState([]);
