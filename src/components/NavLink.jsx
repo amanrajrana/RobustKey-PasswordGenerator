@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const NavLink = ({ to, label }) => {
   const location = useLocation();
-  console.log("aman", location);
   return (
     <Link
       to={to}
