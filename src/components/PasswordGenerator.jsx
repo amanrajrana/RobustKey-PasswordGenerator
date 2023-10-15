@@ -1,10 +1,8 @@
 import { useState } from "react";
 import CheckBoxWithLabel from "./checkBoxWithLabel";
-import CopyClipboard from "../assets/CopyClipboard";
-import { useAlert } from 'react-alert'
+import CopyButton from "./CopyButton";
 
 const PasswordGenerator = () => {
-  const alert = useAlert()
   // State variables
   const [message, setMessage] = useState(
     "Create. Protect. Secure. Generate your password now"
@@ -77,25 +75,6 @@ const PasswordGenerator = () => {
     setPassword(generatedPassword);
   };
 
-  // Copy password to clipboard
-  const copyPassword = () => {
-    if (password.length < 1) {
-      return;
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard
-        .writeText(password)
-        .then(() => {
-          alert.show("Password copied", { type: 'success' });
-        })
-        .catch((error) => {
-          alert.show("Unable to copy text to clipboard:", error);
-        });
-    } else {
-      alert.show("unable to copy password!");
-    }
-  };
-
   // Handle checkbox click
   const handleCheckBoxClick = (e) => {
     const { name, checked } = e.target;
@@ -122,21 +101,18 @@ const PasswordGenerator = () => {
             Generate strong, secure passwords instantly. Safeguard your accounts
             with ease. Take control of your online security now.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full md:justify-start justify-center items-end ">
-            <div className="relative mr-4 w-[96%] md:w-full lg:w-full xl:w-1/2 ">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full md:justify-start justify-center items-end">
+            <div className="relative mr-4 w-[96%] md:w-full lg:w-full xl:w-1/2 flex-1">
               <input
                 type="text"
-                className="placeholder:italic w-full text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 pl-3 pr-8 leading-8 transition-colors duration-200 ease-in-out tracking-widest active:relative active:top-0.5 text-ellipsis"
+                className="placeholder:italic placeholder:font-normal placeholder:text-base font-semibold w-full text-lg bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-black dark:text-white py-2 pl-3 pr-8 tracking-widest text-ellipsis"
                 value={password}
                 readOnly
                 placeholder="Click Generate to Generate Password"
               />
-              <button
-                onClick={copyPassword}
-                className="absolute right-0 top-0 bottom-0 m-auto mr-2 cursor-pointer"
-              >
-                {password ? <CopyClipboard /> : ""}
-              </button>
+              <div className="absolute right-1 h-full flex justify-center items-center bottom-0 m-auto cursor-pointer">
+                {password ? <CopyButton content={password} /> : ""}
+              </div>
             </div>
             <button
               className="inline-flex text-white bg-indigo-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-700 rounded text-lg active:relative active:top-0.5 m-auto lg:m-0"
@@ -173,7 +149,7 @@ const PasswordGenerator = () => {
               onChange={(e) => setPasswordLength(e.target.value)}
             />
           </div>
-            
+
           {checkBoxOptions.map((option) => (
             <CheckBoxWithLabel
               key={option.key}
@@ -189,7 +165,7 @@ const PasswordGenerator = () => {
             </label>
             <input
               type="text"
-              className="w-52 text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              className="w-52 text-sm bg-gray-100 dark:bg-gray-600 rounded border bg-opacity-50 border-gray-300 dark:border-blue-950 focus:ring-2 focus:ring-blue-200 focus:bg-transparent focus:border-indigo-700 outline-none text-gray-700 dark:text-white py-2 px-3"
               placeholder="Enter characters to exclude"
               value={excludeCharacters}
               onChange={(e) => setExcludeCharacters(e.target.value)}

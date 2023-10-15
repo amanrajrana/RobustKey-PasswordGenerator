@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const NavLink = ({ to, label }) => {
+  const location = useLocation();
   return (
-    <Link to={to} className="text-lg sm:opacity-90 hover:opacity-100">
+    <Link
+      to={to}
+      className={`hover:text-white text-lg ${
+        location.pathname === to ? "text-white" : "text-slate-200"
+      }`}
+    >
       {label}
     </Link>
   );

@@ -1,9 +1,10 @@
-import Contributors from "./components/Contributors";
-import Home from "./components/Home";
+import Contributors from "./Pages/Contributors";
+import Home from "./Pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
-import About from "./components/About";
+import About from "./Pages/About";
 import { useEffect, useState } from "react";
+import ContributorsState from "./contexts/contributors/contributorsState";
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(() => {
@@ -27,14 +28,16 @@ function App() {
     localStorage.theme = "light";
   }, [isDarkTheme]);
   return (
-    <div className="dark:bg-gray-900 dark:text-white">
-      <Nav isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contributors" element={<Contributors />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
+    <ContributorsState>
+      <div className="dark:bg-gray-900 dark:text-white">
+        <Nav isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contributors" element={<Contributors />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </ContributorsState>
   );
 }
 
