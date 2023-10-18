@@ -2,7 +2,6 @@ import { FaQuoteRight } from "react-icons/fa";
 import FiveRandomContributors from "../components/FiveRandomContributors";
 import PasswordGenerator from "../components/PasswordGenerator";
 import { BiLinkExternal } from "react-icons/bi";
-
 const Home = () => {
   return (
     <div>
