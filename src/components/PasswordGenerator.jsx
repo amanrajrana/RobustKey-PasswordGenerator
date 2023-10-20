@@ -1,14 +1,12 @@
 import { useState } from "react";
 import CheckBoxWithLabel from "./checkBoxWithLabel";
 import CopyButton from "./CopyButton";
-import PasswordStrengthIndicator from "../components/PasswordStrength";
 
 const PasswordGenerator = () => {
   // State variables
   const [message, setMessage] = useState(
     "Create. Protect. Secure. Generate your password now"
   );
-
   const [password, setPassword] = useState("");
   const [passwordLength, setPasswordLength] = useState(15);
   const [isUserError, setIsUserError] = useState(false);
@@ -131,8 +129,6 @@ const PasswordGenerator = () => {
             {message}
           </p>
           <h4 className="font-semibold my-3">Customize Password</h4>
-  <PasswordStrengthIndicator password={password}/>
-
           <div className="flex gap-2">
             <input
               className="cursor-pointer"
@@ -185,7 +181,6 @@ const PasswordGenerator = () => {
           />
         </div>
       </div>
-
     </section>
   );
 };
