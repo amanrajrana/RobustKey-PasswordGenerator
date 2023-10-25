@@ -59,7 +59,7 @@ RobustKey welcomes contributors of all levels. Whether you're a seasoned develop
     npm run dev
     ```
 ## Our Contributors 
-![Our Contributors](./images/contributors.svg)
+![Our Contributors](https://contrib.rocks/image?repo=amanrajrana/RobustKey-PasswordGenerator)
 We would like to extend our heartfelt gratitude to the dedicated contributors whose passion and expertise have enriched our repository, driving innovation and collaboration.
 
 ## Authors
